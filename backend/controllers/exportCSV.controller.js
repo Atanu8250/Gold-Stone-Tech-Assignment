@@ -15,7 +15,7 @@ const exportCSV = async (req, res) => {
                     { id: 'email', title: 'Email' },
                     { id: 'gender', title: 'Gender' },
                     { id: 'status', title: 'Status' },
-                    { id: 'createdAt', title: 'Updated at' },
+                    { id: 'createdAt', title: 'Created at' },
                     { id: 'updatedAt', title: 'Updated at' },
                ],
           });
