@@ -32,6 +32,7 @@ const exportCSV = async (req, res) => {
 
                     // Send the CSV data as a response to the frontend
                     res.send(csvData);
+                    fs.unlinkSync(filePath)
                })
                .catch((error) => {
                     console.error('Something went wrong. Unable to write the CSV file.', error);
