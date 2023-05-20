@@ -1,6 +1,24 @@
 # GOLD STONE TECH ASSIGNMENT
 
+## For using this application locally follow the mentioned steps
+1. Clone the repo
+2. Do `npm install` in both `frontend` and `backend` folder
+3. For starting the application go to `frontend` file
+4. Run this command in the `frontend` folder `npm run dev` to run the application locally
 
+1. For running the backend
+2. Do `npm install` in `backend` folder
+3. Run this command `npm run server` to start the backend
+
+## Pages
+1. Home Page
+![home](https://github.com/Atanu8250/Gold-Stone-Tech-Assignment/assets/94675329/753cc316-d9ae-4346-a1f8-ec8c0264f538)
+
+2. Update Modal
+![updateModal](https://github.com/Atanu8250/Gold-Stone-Tech-Assignment/assets/94675329/aebda791-9415-475c-99c6-efd28ebd3db7)
+
+
+---
 
 ## Backend api documentation : [Docs](https://documenter.getpostman.com/view/25954835/2s93m1ajmn)
 
