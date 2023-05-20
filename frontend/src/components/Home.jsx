@@ -25,6 +25,36 @@ function Home() {
      const [updateUserId, setUpdateUserId] = useState();
 
 
+     const downloadCSV = useCallback(async () => {
+          console.log('CSV downloaded')
+          // Make a request to the backend to initiate the download
+          fetch(`${import.meta.env.VITE_APP_SERVER_URL}/export-csv`) // Replace with your backend API endpoint
+               .then((response) => response.blob())
+               .then((blob) => {
+                    // Create a URL for the blob object
+                    const url = window.URL.createObjectURL(blob);
+                    // Create a temporary link element
+                    const link = document.createElement("a");
+                    // Set the link's href to the generated URL
+                    link.href = url;
+                    // Set the filename for the downloaded file
+                    link.download = "user_master.csv";
+                    // Append the link to the document body
+                    document.body.appendChild(link);
+                    // Simulate a click on the link to trigger the download
+                    link.click();
+                    // Clean up by removing the link from the document body
+                    document.body.removeChild(link);
+                    // Revoke the URL to release memory resources
+                    window.URL.revokeObjectURL(url);
+               })
+               .catch((error) => {
+                    console.error("Error downloading the file", error);
+                    // Handle the error, e.g., show an error message to the user
+               });
+     }, [])
+
+
      const handleSubmit = useCallback((e) => {
           e.preventDefault();
 
@@ -45,7 +75,7 @@ function Home() {
      return loading ? <Loading /> : (
           <>
                <Box className={style.home}>
-                    <Button className={style['download-btn']}>
+                    <Button className={style['download-btn']} onClick={downloadCSV}>
                          <Text>Download CSV</Text>
                          <FaDownload />
                     </Button>

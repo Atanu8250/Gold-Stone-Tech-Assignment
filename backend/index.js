@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRouter = require('./routes/user.routes');
+const { exportCSVRouter } = require('./routes/exportCSV.routes');
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +15,7 @@ app.get('/', async (req, res) => {
 })
 
 app.use("/user", userRouter);
+app.use("/export-csv", exportCSVRouter)
 
 // FOR WRONG URL-ENDPOINTS
 app.use("*", (req, res) => {
@@ -31,46 +33,3 @@ app.listen(process.env.PORT || 8080, async () => {
           console.log('❌ error:', error);
      }
 })
-
-/*
-const { parseAsync } = require("json2csv");
-const fs = require("fs");
-const path = require("path");
-const User = require("../models/user.model");
-
-const exportData = async (req, res) => {
-    try {
-        const users = await User.find();
-        const fields = [
-            "Id",
-            "name",
-            "email",
-            "gender",
-            "status",
-            "Created_at",
-            "Updated_at",
-        ];
-        const options = { fields };
-        const csv = await parseAsync(users, options);
-
-        const filePath = path.join(__dirname, "user_master.csv");
-        fs.writeFileSync(filePath, csv);
-
-        console.log("User data exported as csv");
-
-        res.download(filePath, "user_master.csv", (error) => {
-            if (error) {
-                console.error("Something went wrong can't download your file", error);
-            }
-            fs.unlinkSync(filePath); // Remove the temporary file after download
-        });
-    } catch (error) {
-        console.error("Something went wrong can't export your data", error);
-        res.status(500).json({ error: "Something went wrong can't export your data" });
-    }
-};
-
-module.exports = {
-    exportData
-}
-*/ 
