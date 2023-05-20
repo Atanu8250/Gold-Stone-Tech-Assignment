@@ -28,7 +28,7 @@ function Home() {
      const downloadCSV = useCallback(async () => {
           console.log('CSV downloaded')
           // Make a request to the backend to initiate the download
-          fetch(`${import.meta.env.VITE_APP_SERVER_URL}/export-csv`) // Replace with your backend API endpoint
+          fetch(`${import.meta.env.VITE_APP_SERVER_URL}/export-csv`)
                .then((response) => response.blob())
                .then((blob) => {
                     // Create a URL for the blob object
