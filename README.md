@@ -26,7 +26,7 @@
 | Method | Route | Description |
 |-------|-------------|----------|
 |`GET`| user/get/ | Get all the users |
-|`PATCH`| user/update/:userId | Update the with updateed data |
+|`PATCH`| user/update/:userId | Update the with updated data |
 |`GET`| /export-csv |	Get CSV file with all the user's data |
 
 
